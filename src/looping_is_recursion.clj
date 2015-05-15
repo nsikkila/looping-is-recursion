@@ -49,7 +49,17 @@
       (recur (rest s) (toggle t (first s))))))
 
 (defn fast-fibo [n]
-  ":(")
+  (cond
+   (= n 0)
+     0
+   (= n 1)
+     1
+   :else
+    (loop [Fn 1 Fp 1 i 2]
+      (if (= i n)
+        Fn
+        (recur (+ Fn Fp) Fn (inc i))))))
+
 
 (defn cut-at-repetition [a-seq]
   [":("])
