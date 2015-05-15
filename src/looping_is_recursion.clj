@@ -39,8 +39,14 @@
       (/ sum c)
       (recur (inc c) (rest s) (+ sum (first s))))))
 
+(defn toggle [a-set elem]
+  (if (contains? a-set elem) (disj a-set elem) (conj a-set elem)))
+
 (defn parity [a-seq]
-  ":(")
+  (loop [s a-seq t #{}]
+    (if (empty? s)
+      t
+      (recur (rest s) (toggle t (first s))))))
 
 (defn fast-fibo [n]
   ":(")
