@@ -56,5 +56,8 @@
 
 
 (defn cut-at-repetition [a-seq]
-  [":("])
+  (loop [t #{} s a-seq v []]
+    (if (or (empty? s) (contains? t (first s)))
+      v
+      (recur (conj t (first s)) (rest s) (conj v (first s))))))
 
