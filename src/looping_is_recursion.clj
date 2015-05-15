@@ -13,7 +13,15 @@
     (recur (rest a-seq))))
 
 (defn seq= [seq1 seq2]
-  ":(")
+  (cond
+   (not (= (count seq1) (count seq2)))
+     false
+   (and (empty? seq1) (empty? seq2))
+     true
+   (not (= (first seq1) (first seq2)))
+    false
+   :else
+    (recur (rest seq1) (rest seq2))))
 
 (defn find-first-index [pred a-seq]
   ":(")
